@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"> Product Brand </th>
+            <th scope="col"> Product Category </th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for page in brand_list %}
+        <tr>
+            <td>{{ page.brand_name }}</td>
+            <td>{{ page.brand_category }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

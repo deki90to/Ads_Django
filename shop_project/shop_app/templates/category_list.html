@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"> Category </th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for page in category_list %}
+        <td class="list-group-item">{{ page.category_name }}</td>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}
