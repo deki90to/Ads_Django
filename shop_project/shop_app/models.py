@@ -24,6 +24,9 @@ class Brand(models.Model):
     def __str__(self):
         return self.brand_name
 
+    def get_absolute_url(self):
+        return reverse('brand')
+
 
 class ProductName(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -34,6 +37,9 @@ class ProductName(models.Model):
 
     def __str__(self):
         return self.product_name
+
+    def get_absolute_url(self):
+        return reverse('device')
 
 
 class Buyer(models.Model):
@@ -46,3 +52,6 @@ class Buyer(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}, {self.email} ({self.note})'
+
+    def get_absolute_url(self):
+        return reverse('buyer')
