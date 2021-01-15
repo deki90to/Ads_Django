@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"> Buyer First Name </th>
+            <th scope="col"> Buyer Last Name </th>
+            <th scope="col"> Buyer Cellphone Number </th>
+            <th scope="col"> Buyer Email </th>
+            <th scope="col"> Buyer Address </th>
+            <th scope="col"> Buyer NOTE </th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for page in buyer_list %}
+        <tr>
+            <td>{{ page.first_name }}</td>
+            <td>{{ page.last_name }}</td>
+            <td>{{ page.phone }}</td>
+            <td>{{ page.email }}</td>
+            <td>{{ page.address }}</td>
+            <td>{{ page.note }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

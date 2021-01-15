@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -10,6 +11,9 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
+
+    def get_absolute_url(self):
+        return reverse('category')
 
 
 class Brand(models.Model):
@@ -24,7 +28,7 @@ class Brand(models.Model):
 class ProductName(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     product_name = models.CharField(max_length=200)
-    product_description = models.TextField(max_length=1000)
+    product_description = models.TextField(max_length=2000)
     product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
     buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True)
 
@@ -41,4 +45,4 @@ class Buyer(models.Model):
     note = models.TextField(max_length=1000)
 
     def __str__(self):
-        return f'{self.first_name}, {self.last_name}, {self.email}'
+        return f'{self.first_name} {self.last_name}, {self.email} ({self.note})'
