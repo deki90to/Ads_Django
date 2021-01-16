@@ -36,7 +36,7 @@ class ProductName(models.Model):
     product_name = models.CharField(max_length=200)
     product_description = models.TextField(max_length=1000)
     date_posted = models.DateTimeField(auto_now_add=True)
-    product_picture = ResizedImageField(size=[320,240], quality=100, upload_to='pictures', null=True, blank=True)
+    product_picture = ResizedImageField(size=[200,110], quality=100, upload_to='pictures', null=True, blank=True)
     # product_picture = RichTextUploadingField()
     product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
     buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True)
