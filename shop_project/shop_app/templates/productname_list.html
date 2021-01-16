@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 
-
-
-
 {% block content %}
 
 <table class="table table-striped">
@@ -10,8 +7,9 @@
         <tr>
             <th scope="col"> Product Name </th>
             <th scope="col"> Product Specs </th>
-            <th scope="col"> Product Category </th>
-            <th scope="col"> Buyer </th>
+            <th scope="col"> Product Brand </th>
+            <th scope="col"> Product Picture </th>
+            <th scope="col"> Product Buyer </th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +19,7 @@
             <td>{{ page.product_name }}</td>
             <td>{{ page.product_description }}</td>
             <td>{{ page.product_brand }}</td>
+            <td><img src="{{ page.product_picture.url }}"></td>
             <td>{{ page.buyer }}</td>
         </tr>
     {% endfor %}
