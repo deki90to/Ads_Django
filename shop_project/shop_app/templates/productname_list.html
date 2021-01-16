@@ -5,10 +5,10 @@
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
+            <th scope="col"> Product Picture </th>
             <th scope="col"> Product Name </th>
             <th scope="col"> Product Specs </th>
             <th scope="col"> Product Brand </th>
-            <th scope="col"> Product Picture </th>
             <th scope="col"> Product Buyer </th>
         </tr>
     </thead>
@@ -16,10 +16,14 @@
 
     {% for page in productname_list %}
         <tr>
+            <td>{% if not post.product_image %}
+                    No Image                
+                {% else %}
+                    <img src="{{ post.image.url }}">
+                {% endif %}</td>
             <td>{{ page.product_name }}</td>
             <td>{{ page.product_description }}</td>
             <td>{{ page.product_brand }}</td>
-            <td><img src="{{ page.product_picture.url }}"></td>
             <td>{{ page.buyer }}</td>
         </tr>
     {% endfor %}

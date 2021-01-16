@@ -3,6 +3,7 @@ import uuid
 from django.urls import reverse
 from django_resized import ResizedImageField
 from datetime import datetime
+# from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):
@@ -36,6 +37,7 @@ class ProductName(models.Model):
     product_description = models.TextField(max_length=1000)
     date_posted = models.DateTimeField(auto_now_add=True)
     product_picture = ResizedImageField(size=[320,240], quality=100, upload_to='pictures', null=True, blank=True)
+    # product_picture = RichTextUploadingField()
     product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
     buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True)
 
@@ -44,7 +46,7 @@ class ProductName(models.Model):
         return (f'{self.product_name}, {self.product_brand} {self.product_picture}')
 
     def get_absolute_url(self):
-        return reverse('device')
+        return reverse('product')
 
 
 class Buyer(models.Model):
