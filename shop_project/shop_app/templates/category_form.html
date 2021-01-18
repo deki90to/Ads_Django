@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <br>
 <form class="form-group" method="post">
     {% csrf_token %}
@@ -10,5 +11,7 @@
     <input class="btn btn-primary" type="submit" value='Save Category'>
 
 </form>
-
+{% else %}
+<a href="{% url 'register' %}">Register</a> or <a href="{% url 'login' %}">Login</a>
+{% endif %}
 {% endblock %}

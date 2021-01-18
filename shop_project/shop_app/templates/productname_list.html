@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% if user.is_authenticated %}
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
@@ -32,5 +32,7 @@
 
     </tbody>
 </table>
-
+{% else %}
+<a href="{% url 'register' %}">Register</a> or <a href="{% url 'login' %}">Login</a>
+{% endif %}
 {% endblock %}
