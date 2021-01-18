@@ -41,7 +41,6 @@ class ProductName(models.Model):
     product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
     buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True)
 
-
     def __str__(self):
         return (f'{self.product_name}, {self.product_brand} {self.product_picture}')
 

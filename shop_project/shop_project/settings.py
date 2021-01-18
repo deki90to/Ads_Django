@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop_app',
+    'users',
     # 'ckeditor',
     # 'ckeditor_uploader',
 ]
@@ -117,3 +118,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+LOGIN_REDIRECT_URL = 'category'
+LOGOUT_REDIRECT_URL = 'category'
