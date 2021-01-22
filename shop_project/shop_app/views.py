@@ -21,7 +21,6 @@ class BuyerListView(generic.ListView):
     template_name = 'buyer_list.html'
 
 
-
 class CategoryCreateView(generic.CreateView):
     model = Category
     template_name = 'category_form.html'
