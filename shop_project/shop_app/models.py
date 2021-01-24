@@ -37,7 +37,7 @@ class ProductName(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
     product_picture = ResizedImageField(size=[200,110], quality=100, upload_to='pictures', null=True, blank=True)
     product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
-    product_price = models.CharField(max_length=7, default='', null=True, blank=True)
+    product_price = models.IntegerField(max_length=7, default='', null=True)
     buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer')
 
     def __str__(self):
