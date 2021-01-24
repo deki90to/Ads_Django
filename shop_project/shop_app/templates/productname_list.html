@@ -9,7 +9,7 @@
             <th scope="col"> Name </th>
             <th scope="col"> Brand </th>
             <th scope="col"> Specs </th>
-            <!-- <th scope="col"> Price </th> -->
+            <th scope="col"> Price(EU) </th>
             <th scope="col"> Buyer </th>
         </tr>
     </thead>
@@ -27,8 +27,12 @@
             <td>{{ page.product_name }}</td>
             <td>{{ page.product_brand }}</td>
             <td>{{ page.product_description }}</td>
-            <!-- <td>{{ page.product_price }}</td> -->
-            <td>{{ page.buyer }}</td>
+            <td>{{ page.product_price }}</td>
+            <td>{% if page.buyer %}
+                    {{ page.buyer }}
+                {% else %}
+                    ON SALE
+                {% endif %}</td>
         </tr>
     {% endfor %}
 
