@@ -5,13 +5,13 @@
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
-            <th scope="col"> Buyer First Name </th>
-            <th scope="col"> Buyer Last Name </th>
-            <th scope="col"> Buyer Phone Number </th>
-            <th scope="col"> Buyer Email </th>
-            <th scope="col"> Buyer Address </th>
-            <th scope="col"> Ordered On: </th>
-            <th scope="col"> Buyer Note </th>
+            <th scope="col"> First Name </th>
+            <th scope="col"> Last Name </th>
+            <th scope="col"> Phone Number </th>
+            <th scope="col"> Email </th>
+            <th scope="col"> Address </th>
+            <th scope="col"> Ordered: </th>
+            <th scope="col"> Note </th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +30,5 @@
 
     </tbody>
 </table>
-{% else %}
-<a href="{% url 'register' %}">Register</a> or <a href="{% url 'login' %}">Login</a>
 {% endif %}
 {% endblock %}

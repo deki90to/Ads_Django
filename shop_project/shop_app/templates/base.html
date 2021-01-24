@@ -29,41 +29,44 @@
 </div>
   </div>
   <nav class="navbar bg-dark">
-    <a class="btn btn-outline-light" href="{% url 'logout' %}"> Log Out </a>
+    <a class="btn btn-sm btn-outline-light" href="{% url 'logout' %}"> Log Out </a>
   </nav>
   </div>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-       <a class="navbar-brand" href="#"></a>
+       <a class="navbar-brand" href="{% url 'product' %}">PRODUCTS</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+<!--           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'category-createview' %}"> New Category </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'brand-createview' %}"> New Brand </a>
-          </li>
-          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'brand-createview' %}"> New Brand </a> -->
+          <!-- </li> -->
+<!--           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'productname-createview' %}"> New Product </a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'buyer' %}"> SOLD items </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> New Buyer </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> BUY something </a>
           </li>
       </div>
     </div>
   </nav>
-
+<!-- 
   <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
        <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-      <!-- <a class="navbar-brand" href="{% url 'category' %}"> Categories </a> -->
+      <a class="navbar-brand" href="{% url 'category' %}"> Categories </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -81,6 +84,7 @@
       </div>
     </div>
   </nav>
+  -->
 {% endif %}
 
 </head>

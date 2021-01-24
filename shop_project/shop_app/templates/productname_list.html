@@ -5,11 +5,12 @@
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
-            <th scope="col"> Product Picture </th>
-            <th scope="col"> Product Name </th>
-            <th scope="col"> Product Specs </th>
-            <th scope="col"> Product Brand </th>
-            <th scope="col"> Product Buyer </th>
+            <th scope="col"> Image </th>
+            <th scope="col"> Name </th>
+            <th scope="col"> Brand </th>
+            <th scope="col"> Specs </th>
+            <!-- <th scope="col"> Price </th> -->
+            <th scope="col"> Buyer </th>
         </tr>
     </thead>
     <tbody>
@@ -24,15 +25,14 @@
                 {% endif %}
             </td>
             <td>{{ page.product_name }}</td>
-            <td>{{ page.product_description }}</td>
             <td>{{ page.product_brand }}</td>
+            <td>{{ page.product_description }}</td>
+            <!-- <td>{{ page.product_price }}</td> -->
             <td>{{ page.buyer }}</td>
         </tr>
     {% endfor %}
 
     </tbody>
 </table>
-{% else %}
-<a href="{% url 'register' %}">Register</a> or <a href="{% url 'login' %}">Login</a>
 {% endif %}
 {% endblock %}

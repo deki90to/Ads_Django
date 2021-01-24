@@ -3,6 +3,7 @@ from django.views import generic
 from django.views.generic.base import TemplateResponseMixin
 from . models import Category, Brand, ProductName, Buyer
 from django.shortcuts import render
+from django.urls import reverse_lazy, reverse
 
 class CategoryListView(generic.ListView):
     model = Category
@@ -42,4 +43,3 @@ class BuyerCreateView(generic.CreateView):
     template_name = 'buyer_form.html'
     fields = '__all__'
     ordering = ['-id']
-
