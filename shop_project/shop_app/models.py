@@ -33,7 +33,7 @@ class Brand(models.Model):
 class ProductName(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     product_name = models.CharField(max_length=200)
-    product_description = models.TextField(max_length=1000)
+    product_description = models.TextField(max_length=500)
     date_posted = models.DateTimeField(auto_now_add=True)
     product_picture = ResizedImageField(size=[200,110], quality=100, upload_to='pictures', null=True, blank=True)
     product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
@@ -48,15 +48,14 @@ class ProductName(models.Model):
 
 
 class Buyer(models.Model):
+    buyed_item = models.ForeignKey('ProductName', on_delete=models.SET_NULL, null=True, blank=False, related_name='buyed_item')
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     phone = models.CharField(max_length=20)
     email = models.EmailField()
-    address = models.TextField(max_length=500)
-    note = models.TextField(max_length=1000)
+    address = models.TextField(max_length=100)
+    note = models.TextField(max_length=300, blank=True, null=True)
     date_buyed = models.DateTimeField(auto_now_add=True)
-    buyed_item = models.ForeignKey('ProductName', on_delete=models.SET_NULL, null=True, blank=False, related_name='buyed_item')
-
 
     def __str__(self):
         return (f'{self.first_name} {self.last_name}')
