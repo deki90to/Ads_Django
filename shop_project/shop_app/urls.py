@@ -14,6 +14,4 @@ urlpatterns = [
     path('buyer/createview/', views.BuyerCreateView.as_view(), name='buyer-createview'),
 
     path('contact_list/', views.contact, name='contact_list'),
-    
-
 ]
