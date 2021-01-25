@@ -29,9 +29,11 @@
             <td>{{ page.product_description }}</td>
             <td>{{ page.product_price }}</td>
             <td>{% if page.buyer %}
+                <br>
                     {{ page.buyer }}
                 {% else %}
-                    ON SALE
+                <br>
+                    <b><a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> Buy Now </a></b>
                 {% endif %}</td>
         </tr>
     {% endfor %}

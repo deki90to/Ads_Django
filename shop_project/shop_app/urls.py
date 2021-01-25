@@ -13,4 +13,7 @@ urlpatterns = [
     path('productname/createview/', views.ProductNameCreateView.as_view(), name='productname-createview'),
     path('buyer/createview/', views.BuyerCreateView.as_view(), name='buyer-createview'),
 
+    path('contact_list/', views.contact, name='contact_list'),
+    
+
 ]

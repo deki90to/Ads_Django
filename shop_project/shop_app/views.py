@@ -45,3 +45,9 @@ class BuyerCreateView(generic.CreateView):
     # fields = '__all__'
     ordering = ['-id']
     form_class = BuyerForm
+
+# class ContactView(generic.ListView):
+#     template_name = 'contact_list.html'
+
+def contact(request):
+    return render(request, 'contact_list.html')
