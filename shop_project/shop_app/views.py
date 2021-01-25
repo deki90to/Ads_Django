@@ -4,6 +4,7 @@ from django.views.generic.base import TemplateResponseMixin
 from . models import Category, Brand, ProductName, Buyer
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
+from . forms import BuyerForm
 
 class CategoryListView(generic.ListView):
     model = Category
@@ -41,5 +42,6 @@ class ProductNameCreateView(generic.CreateView):
 class BuyerCreateView(generic.CreateView):
     model = Buyer
     template_name = 'buyer_form.html'
-    fields = '__all__'
+    # fields = '__all__'
     ordering = ['-id']
+    form_class = BuyerForm

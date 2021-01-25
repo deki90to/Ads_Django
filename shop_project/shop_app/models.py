@@ -5,7 +5,6 @@ from django_resized import ResizedImageField
 from datetime import datetime
 # from ckeditor_uploader.fields import RichTextUploadingField
 
-
 class Category(models.Model):
     category_name = models.CharField(max_length=100, help_text='Category name')
 
