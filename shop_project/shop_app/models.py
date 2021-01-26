@@ -40,7 +40,7 @@ class ProductName(models.Model):
     buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer')
 
     def __str__(self):
-        return (f'{self.product_name}, {self.product_price} (EU)')
+        return (f'{self.product_name}, {self.product_price}')
 
     def get_absolute_url(self):
         return reverse('product')
