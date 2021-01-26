@@ -1,29 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  {% if user.is_authenticated %}
+  <style>
+      .content {
+        max-width: 500px;
+        margin: auto;
+      }
+      </style>
 
-<style>
+      <br> <br>
+      <div class="content">
+          <ul>
+              <h2 style="color:black background: black;"> Contact </h2> <br> <hr>
+            <h5>
+              <a style="color:white background: black;" href="https://www.facebook.com/deki90to"> Facebook </a> <br><br>
+              <a style="color:white background: black;" href="https://www.instagram.com/dejan90to/?hl=en"> Instagram <br><br>
+              <a style="color:white background: black;" href="https://github.com/deki90to"> Github </a> <br>
+          </h5> <hr> <br>
+      
+          <h6> <b> Phone No: </b> +381 61 677 38 28 </h6> <hr>
+          </ul> <br>
+  {% else %} 
+<br> <br>
+  <style>
     .content {
       max-width: 500px;
       margin: auto;
     }
     </style>
+  <br><br>
+  <div class="content">
+    <ul>
+        <h2 style="color:black background: black;"> Contact </h2> <br> <hr>
+      <h5>
+        <a style="color:white background: black;" href="https://www.facebook.com/deki90to"> Facebook </a> <br><br>
+        <a style="color:white background: black;" href="https://www.instagram.com/dejan90to/?hl=en"> Instagram <br><br>
+        <a style="color:white background: black;" href="https://github.com/deki90to"> Github </a> <br>
+    </h5> <hr> <br>
 
-
-    <body>
-    <br> <br>
-    <div class="content">
-        <ul>
-            <h2 style="color:black background: black;"> Contact </h2> <br> <hr>
-           <h5>
-             <a style="color:white background: black;" href="https://www.facebook.com/deki90to"> Facebook </a> <br><br>
-             <a style="color:white background: black;" href="https://www.instagram.com/dejan90to/?hl=en"> Instagram <br><br>
-             <a style="color:white background: black;" href="https://github.com/deki90to"> Github </a> <br>
-         </h5> <hr> <br>
-     
-         <h6> <b> Phone No: </b> +381 61 677 38 28 </h6> <hr>
-         </ul> <br>
-    
-    </body>
-
+    <h6> <b> Phone No: </b> +381 61 677 38 28 </h6> <hr>
+    </ul> <br>
+  
+  {% endif %}
 {% endblock %}
