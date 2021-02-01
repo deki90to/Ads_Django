@@ -43,7 +43,7 @@ class BuyerCreateView(generic.CreateView):
     model = Buyer
     template_name = 'buyer_form.html'
     # fields = '__all__'
-    ordering = ['-id']
+    # ordering = ['-date_buyed']
     form_class = BuyerForm
 
 # class ContactView(generic.ListView):

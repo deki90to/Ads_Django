@@ -59,5 +59,8 @@ class Buyer(models.Model):
     def __str__(self):
         return (f'{self.first_name} {self.last_name}')
 
+    class Meta:
+        ordering = ['-date_buyed']
+
     def get_absolute_url(self):
         return reverse('buyer')
