@@ -36,7 +36,7 @@ class BrandCreateView(generic.CreateView):
 class ProductNameCreateView(generic.CreateView):
     model = ProductName
     template_name = 'productname_form.html'
-    fields = ('product_name', 'product_brand', 'product_description', 'product_picture', 'buyer')
+    fields = ( 'product_brand', 'product_name', 'product_description', 'product_picture', 'product_price')
     ordering = ['-id']
 
 class BuyerCreateView(generic.CreateView):

@@ -11,11 +11,12 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
 
-    class Meta:
-        verbose_name_plural = 'Categories'
-
     def get_absolute_url(self):
         return reverse('category')
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+        ordering = ['category_name']
 
 
 class Brand(models.Model):
@@ -28,13 +29,16 @@ class Brand(models.Model):
     def get_absolute_url(self):
         return reverse('brand')
 
+    class Meta:
+        ordering = ['brand_name']
+
 
 class ProductName(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     product_name = models.CharField(max_length=200)
     product_description = models.TextField(max_length=500)
     date_posted = models.DateTimeField(auto_now_add=True)
-    product_picture = ResizedImageField(size=[200,110], quality=100, upload_to='pictures', null=True, blank=True)
+    product_picture = ResizedImageField(size=[200,110], quality=100, upload_to='pictures', blank=True, null=True)
     product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
     product_price = models.IntegerField(default='0', null=True)
     buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer')
@@ -44,6 +48,9 @@ class ProductName(models.Model):
 
     def get_absolute_url(self):
         return reverse('product')
+
+    class Meta:
+        ordering = ['-date_posted']
 
 
 class Buyer(models.Model):
@@ -59,8 +66,8 @@ class Buyer(models.Model):
     def __str__(self):
         return (f'{self.first_name} {self.last_name}')
 
-    class Meta:
-        ordering = ['-date_buyed']
-
     def get_absolute_url(self):
         return reverse('buyer')
+
+    class Meta:
+        ordering = ['-date_buyed']
