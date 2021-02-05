@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<br>
+<form class="form-group" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <ul>
+        <h1>Are you sure you want to delete {{ object }} EU?</h1>
+        <!-- <input type="submit" value="Confirm">  -->
+        <br>
+        <button class='btn btn-danger text-light'> Yes </button><strong> ✓ </strong><br><br>
+        <a href="{% url 'product' %}" class="btn btn-primary text-light"> No, go back </a>
+    </ul>
+</form>
+{% endif %}
+{% endblock %}

@@ -51,3 +51,10 @@ class BuyerCreateView(generic.CreateView):
 
 def contact(request):
     return render(request, 'contact_list.html')
+
+
+
+class ProductNameDeleteView(generic.DeleteView):
+    model = ProductName
+    template_name = 'delete_item.html'
+    success_url = reverse_lazy('product')

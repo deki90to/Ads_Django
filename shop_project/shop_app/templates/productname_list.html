@@ -20,8 +20,12 @@
             <td>
                 {% if page.product_picture %}
                     <img src="{{ page.product_picture.url }}">
+                    <br>
+                    <a href="{% url 'delete_item' page.pk %}"> Delete </a>
                 {% else %}
                     No Image
+                    <br><br><br>
+                    <a href="{% url 'delete_item' page.pk %}"> Delete </a>
                 {% endif %}
             </td>
             <td>{{ page.product_name }}</td>
