@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateResponseMixin
 from . models import Category, Brand, ProductName, Buyer
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from . forms import BuyerForm
+from . forms import BuyerForm, ProductNameForm
 
 class CategoryListView(generic.ListView):
     model = Category
@@ -15,8 +15,8 @@ class BrandListView(generic.ListView):
     template_name = 'brand_list.html'
 
 class DeviceListView(generic.ListView):
-	model = ProductName
-	template_name = 'productname_list.html'
+    model = ProductName
+    template_name = 'productname_list.html'
 
 class BuyerListView(generic.ListView):
     model = Buyer
@@ -35,8 +35,9 @@ class BrandCreateView(generic.CreateView):
 
 class ProductNameCreateView(generic.CreateView):
     model = ProductName
+    form_class = ProductNameForm
     template_name = 'productname_form.html'
-    fields = ( 'product_brand', 'product_name', 'product_description', 'product_picture', 'product_price')
+    # fields = ('user', 'product_brand', 'product_name', 'product_description', 'product_picture', 'product_price')
     ordering = ['-id']
 
 class BuyerCreateView(generic.CreateView):
@@ -46,12 +47,8 @@ class BuyerCreateView(generic.CreateView):
     # ordering = ['-date_buyed']
     form_class = BuyerForm
 
-# class ContactView(generic.ListView):
-#     template_name = 'contact_list.html'
-
 def contact(request):
     return render(request, 'contact_list.html')
-
 
 
 class ProductNameDeleteView(generic.DeleteView):

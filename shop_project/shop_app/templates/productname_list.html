@@ -10,6 +10,7 @@
             <th scope="col"> Brand </th>
             <th scope="col"> Specs </th>
             <th scope="col"> Price </th>
+            <th scope="col"> Seller </th>
             <th scope="col"> Buyer </th>
         </tr>
     </thead>
@@ -32,6 +33,7 @@
             <td>{{ page.product_brand }}</td>
             <td>{{ page.product_description }}</td>
             <td><br>{{ page.product_price }} (EU)</td>
+            <td> {{ page.user }}</td>
             <td>{% if page.buyer %}
                 <br>
                     {{ page.buyer }}

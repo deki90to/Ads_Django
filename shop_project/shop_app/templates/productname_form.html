@@ -11,6 +11,11 @@
     </table>
     <input class="btn btn-primary" type="submit" value='Save Product'>
 
+    <script>
+        var name = '{{ user.id }}';
+        document.getElementById('admin').value = name;
+    </script>
+
 </form>
 {% endif %}
 {% endblock %}
