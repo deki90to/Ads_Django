@@ -55,3 +55,10 @@ class ProductNameDeleteView(generic.DeleteView):
     model = ProductName
     template_name = 'delete_item.html'
     success_url = reverse_lazy('product')
+
+
+class ProductNameUpdateView(generic.UpdateView):
+    model = ProductName
+    form_class = ProductNameForm
+    template_name = 'update_item.html'
+    success_url = reverse_lazy('product')

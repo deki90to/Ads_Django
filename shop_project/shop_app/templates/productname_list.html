@@ -23,13 +23,15 @@
                     <img src="{{ page.product_picture.url }}">
                     <br>
                     {% if request.user == page.user %}
-                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm btn-danger"> Delete </a>
+                        <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
+                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
                     {% endif %}
                 {% else %}
                     No Image
                     <br><br><br>
                     {% if request.user == page.user %}
-                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm btn-danger"> Delete </a>
+                        <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
+                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
                     {% endif %}
                 {% endif %}
             </td>

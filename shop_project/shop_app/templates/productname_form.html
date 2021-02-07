@@ -2,6 +2,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+<ul>
 <br>
 <form class="form-group" method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -17,5 +18,6 @@
     </script>
 
 </form>
+</ul>
 {% endif %}
 {% endblock %}

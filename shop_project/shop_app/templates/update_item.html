@@ -4,12 +4,13 @@
 {% if user.is_authenticated %}
 <ul>
 <br>
-<form class="form-group" method="post">
+<form class="form-group" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <table class="table table-hover">
         {{ form.as_table}}
+        {{ form.media }}
     </table>
-    <input class="btn btn-primary" type="submit" value='Save Buyer'>
+    <input class="btn btn-primary" type="submit" value='Update'>
 
 </form>
 </ul>
