@@ -29,7 +29,7 @@
                     No Image
                     <br><br><br>
                     {% if request.user == page.user %}
-                        <a href="{% url 'delete_item' page.pk %}"> Delete </a>
+                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm btn-danger"> Delete </a>
                     {% endif %}
                 {% endif %}
             </td>
@@ -37,11 +37,9 @@
             <td>{{ page.product_brand }}</td>
             <td>{{ page.product_description }}</td>
             <td><br><b>{{ page.product_price }}</b>e</td>
-            <td>
-                Name: <br> <b> {{ page.user }} </b>
+            <td> Name: <br> <b> {{ page.user }} </b>
                     <br><br>
-                Phone: <br> <b> {{ page.phone }}
-                </b>
+                Phone: <br> <b> {{ page.phone }} </b>
             </td>
             <td>{% if page.buyer %}
                 <br>
