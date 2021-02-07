@@ -44,6 +44,7 @@ class ProductName(models.Model):
     product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
     product_price = models.IntegerField(default='0', null=True)
     buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer')
+    phone = models.CharField(max_length=20)
 
     def __str__(self):
         return (f'{self.product_name}, {self.product_price}, {self.user}')

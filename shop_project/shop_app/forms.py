@@ -13,9 +13,8 @@ class BuyerForm(forms.ModelForm):
 class ProductNameForm(forms.ModelForm):
 	class Meta:
 		model = ProductName
-		fields = ('user', 'product_brand', 'product_name', 'product_description', 'product_picture', 'product_price')
+		fields = ('user', 'product_brand', 'product_name', 'product_description', 'product_picture', 'product_price', 'phone')
 
 		widgets = {
-			'author':forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'admin', 'type':'hidden'}),
-			'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Type comment', 'rows':1, 'cols':10}),
+			'user':forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'admin', 'type':'hidden'}),
 		}

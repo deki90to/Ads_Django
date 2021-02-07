@@ -10,7 +10,7 @@
             <th scope="col"> Brand </th>
             <th scope="col"> Specs </th>
             <th scope="col"> Price </th>
-            <th scope="col"> Seller </th>
+            <th scope="col"> Seller Info </th>
             <th scope="col"> Buyer </th>
         </tr>
     </thead>
@@ -22,7 +22,9 @@
                 {% if page.product_picture %}
                     <img src="{{ page.product_picture.url }}">
                     <br>
-                    <a href="{% url 'delete_item' page.pk %}"> Delete </a>
+                {% if request.user == page.user %}
+                    <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm btn-danger"> Delete </a>
+                {% endif %}
                 {% else %}
                     No Image
                     <br><br><br>
@@ -32,15 +34,21 @@
             <td>{{ page.product_name }}</td>
             <td>{{ page.product_brand }}</td>
             <td>{{ page.product_description }}</td>
-            <td><br>{{ page.product_price }} (EU)</td>
-            <td> {{ page.user }}</td>
+            <td><br><b>{{ page.product_price }}</b>e</td>
+            <td>
+                Name: <br> <b> {{ page.user }} </b>
+                    <br><br>
+                Phone: <br> <b> {{ page.phone }}
+                </b>
+            </td>
             <td>{% if page.buyer %}
                 <br>
                     {{ page.buyer }}
                 {% else %}
                 <br>
                     <b><a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> Buy Now </a></b>
-                {% endif %}</td>
+                {% endif %}
+            </td>
         </tr>
     {% endfor %}
 
