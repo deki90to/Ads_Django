@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+	{% if user.is_authenticated %}
+		{% if user.is_authenticated %}
+			{% if productname.product_picture %}
+				<img src="{{ productname.product_picture.url }}" class="d-block w-100">
+				<img src="{{ productname.product_picture_2.url }}" class="d-block w-100">
+				<img src="{{ productname.product_picture_3.url }}" class="d-block w-100">
+				<img src="{{ productname.product_picture_4.url }}" class="d-block w-100">
+				<img src="{{ productname.product_picture_5.url }}" class="d-block w-100">
+				<img src="{{ productname.product_picture_6.url }}" class="d-block w-100">
+			{% else %}
+				<h3> No Images </h3>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+{% endblock %}

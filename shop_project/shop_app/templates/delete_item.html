@@ -7,11 +7,12 @@
     {% csrf_token %}
     {{ form }}
     <ul>
+    	<br>
         <h3>Are you sure you want to delete {{ object }} EU?</h3>
         <!-- <input type="submit" value="Confirm">  -->
         <br>
-        <button class='btn btn-danger text-light'> Yes, delete </button> <br><br>
-        <a href="{% url 'product' %}" class="btn btn-primary text-light"> No, go back </a>
+        <button class='btn btn-danger text-light'> YES </button> 
+        <a href="{% url 'product' %}" class="btn btn-primary text-light"> NO </a>
     </ul>
 </form>
 {% endif %}
