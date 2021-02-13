@@ -5,16 +5,43 @@
 {% block content %}
 	{% if user.is_authenticated %}
 		{% if user.is_authenticated %}
-			{% if productname.product_picture %}
-				<img src="{{ productname.product_picture.url }}" class="d-block w-100">
+
+			{% if productname.product_picture_1 %}
+				<img src="{{ productname.product_picture_1.url }}" class="d-block w-100">
+			{% else %}
+			<h3> No Image Number 1 </h3>
+			{% endif %}
+
+			{% if productname.product_picture_2 %}
 				<img src="{{ productname.product_picture_2.url }}" class="d-block w-100">
+			{% else %}
+			<h3> No Image Number 2  </h3>
+			{% endif %}
+
+			{% if productname.product_picture_3 %}
 				<img src="{{ productname.product_picture_3.url }}" class="d-block w-100">
+			{% else %}
+			<h3> No Image Number 3  </h3>
+			{% endif %}
+
+			{% if productname.product_picture_4 %}
 				<img src="{{ productname.product_picture_4.url }}" class="d-block w-100">
-				<img src="{{ productname.product_picture_5.url }}" class="d-block w-100">
+			{% else %}
+			<h3> No Image Number 4  </h3>
+			{% endif %}
+
+			{% if productname.product_picture_5 %}
 				<img src="{{ productname.product_picture_6.url }}" class="d-block w-100">
 			{% else %}
-				<h3> No Images </h3>
+			<h3> No Image Number 5  </h3>
 			{% endif %}
+
+			{% if productname.product_picture_6 %}
+				<img src="{{ productname.product_picture_6.url }}" class="d-block w-100">
+			{% else %}
+				<h3> No Image Number 6  </h3>
+			{% endif %}
+
 		{% endif %}
 	{% endif %}
 {% endblock %}

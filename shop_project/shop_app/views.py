@@ -5,6 +5,8 @@ from . models import Category, Brand, ProductName, Buyer
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from . forms import BuyerForm, ProductNameForm
+from django.forms.models import model_to_dict
+
 
 class CategoryListView(generic.ListView):
     model = Category
@@ -62,3 +64,8 @@ class ProductNameUpdateView(generic.UpdateView):
     form_class = ProductNameForm
     template_name = 'update_item.html'
     success_url = reverse_lazy('product')
+
+
+class ImagesDetailView(generic.DetailView):
+    model = ProductName
+    template_name = 'images_details.html'

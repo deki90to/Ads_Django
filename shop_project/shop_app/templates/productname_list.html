@@ -9,7 +9,7 @@
             <th scope="col"> Name </th>
             <th scope="col"> Brand </th>
             <th scope="col"> Specs </th>
-            <th scope="col"> Price </th>
+            <th scope="col"> Price (eu) </th>
             <th scope="col"> Seller Info </th>
             <th scope="col"> Buyer </th>
         </tr>
@@ -18,8 +18,8 @@
     {% for page in productname_list %}
         <tr>
             <td>
-                {% if page.product_picture %}
-                    <a href="{% url 'images_detailview' page.pk %}"><img src="{{ page.product_picture.url }}"></a>
+                {% if page.ad_image %}
+                    <a href="{% url 'images_detailview' page.pk %}"><img src="{{ page.ad_image.url }}"></a>
                     {% if request.user == page.user %}
                         <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
                         <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>

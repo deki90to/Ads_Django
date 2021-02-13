@@ -5,7 +5,6 @@ admin.site.register(Category)
 admin.site.register(Brand)
 admin.site.register(Buyer)
 
-
 admin.site.register(ProductName)
 
 class ProductName(admin.ModelAdmin):

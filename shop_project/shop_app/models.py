@@ -6,6 +6,7 @@ from datetime import datetime
 # from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 
+
 class Category(models.Model):
     category_name = models.CharField(max_length=100, help_text='Category name')
 
@@ -21,8 +22,8 @@ class Category(models.Model):
 
 
 class Brand(models.Model):
-    brand_name = models.CharField(max_length=255, help_text='Product name')
-    brand_category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='product_category')
+    brand_name =        models.CharField(max_length=255, help_text='Product name')
+    brand_category =    models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='product_category')
 
     def __str__(self):
         return self.brand_name
@@ -35,16 +36,22 @@ class Brand(models.Model):
 
 
 class ProductName(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    product_name = models.CharField(max_length=200)
-    product_description = models.TextField(max_length=500)
-    date_posted = models.DateTimeField(auto_now_add=True)
-    product_picture = ResizedImageField(size=[200,110], quality=100, upload_to='pictures', blank=True, null=True)
-    product_brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
-    product_price = models.IntegerField(default='0', null=True)
-    buyer = models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer')
-    phone = models.CharField(max_length=20)
+    user =                  models.ForeignKey(User, on_delete=models.CASCADE)
+    id =                    models.UUIDField(primary_key=True, default=uuid.uuid4)
+    product_name =          models.CharField(max_length=200)
+    product_description =   models.TextField(max_length=500)
+    date_posted =           models.DateTimeField(auto_now_add=True)
+    ad_image =              ResizedImageField(size=[200,110], quality=100, upload_to='pictures', blank=True, null=True)
+    product_picture_1 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
+    product_picture_2 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
+    product_picture_3 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
+    product_picture_4 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
+    product_picture_5 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
+    product_picture_6 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
+    product_brand =         models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
+    product_price =         models.IntegerField(default='0', null=True)
+    buyer =                 models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer')
+    phone =                 models.CharField(max_length=20)
 
     def __str__(self):
         return (f'{self.product_name}, {self.product_price}, {self.user}')
@@ -57,14 +64,14 @@ class ProductName(models.Model):
 
 
 class Buyer(models.Model):
-    buyed_item = models.ForeignKey('ProductName', on_delete=models.SET_NULL, null=True, blank=False, related_name='buyed_item')
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    phone = models.CharField(max_length=20)
-    email = models.EmailField()
-    address = models.TextField(max_length=100)
-    note = models.TextField(max_length=300, blank=True, null=True)
-    date_buyed = models.DateTimeField(auto_now_add=True)
+    buyed_item =    models.ForeignKey('ProductName', on_delete=models.SET_NULL, null=True, blank=False, related_name='buyed_item')
+    first_name =    models.CharField(max_length=200)
+    last_name =     models.CharField(max_length=200)
+    phone =         models.CharField(max_length=20)
+    email =         models.EmailField()
+    address =       models.TextField(max_length=100)
+    note =          models.TextField(max_length=300, blank=True, null=True)
+    date_buyed =    models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return (f'{self.first_name} {self.last_name}')
