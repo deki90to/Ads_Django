@@ -49,7 +49,7 @@ class ProductName(models.Model):
     product_picture_5 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
     product_picture_6 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
     product_brand =         models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
-    product_price =         models.IntegerField(default='0', null=True)
+    product_price =         models.IntegerField(default='0', null=True, blank=False)
     buyer =                 models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer')
     phone =                 models.CharField(max_length=20)
 

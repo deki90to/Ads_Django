@@ -37,15 +37,19 @@
             <td>{{ page.product_brand }}</td>
             <td>{{ page.product_description }}</td>
             <td><br>{{ page.product_price }}</td>
-            <td> Name: <br> <b> {{ page.user }} </b>
-                    <br><br>
-                Phone: <br> <b> {{ page.phone }} </b>
-            </td>
+                <td>
+                {% if request.user == page.user %}
+                    <br><br> 
+                    It's me
+                {% else %}
+                    Name: <br> {{ page.user }} <br><br> Phone: <br> {{ page.phone }} 
+                {% endif %}
+                </td>
             <td>
                 {% if page.buyer %}
                     <br>
                     <!-- {{ page.buyer }} -->
-                     <b><a class="nav-link active btn btn text-danger" aria-current="page" href="{% url 'buyer' %}"> SOLD (details) </a></b>
+                     <a class="nav-link active btn btn text-danger" aria-current="page" href="{% url 'buyer' %}"> <b> SOLD (click for details) </b></a>
                 {% else %}
                     <br>
                     {% if request.user != page.user %}
