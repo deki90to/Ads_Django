@@ -44,9 +44,10 @@
             <td>
                 {% if page.buyer %}
                     <br>
-                    {{ page.buyer }}
+                    <!-- {{ page.buyer }} -->
+                     <b><a class="nav-link active btn btn text-danger" aria-current="page" href="{% url 'buyer' %}"> SOLD (details) </a></b>
                 {% else %}
-                <br>
+                    <br>
                     {% if request.user != page.user %}
                         <b><a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> Buy Now </a></b>
                     {% else %}
