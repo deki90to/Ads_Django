@@ -8,7 +8,7 @@
             <th scope="col"> Images </th>
             <th scope="col"> Name </th>
             <th scope="col"> Brand </th>
-            <th scope="col"> Specs </th>
+            <th scope="col"> Details </th>
             <th scope="col"> Price (eu) </th>
             <th scope="col"> Seller Info </th>
             <th scope="col"> Buyer </th>
@@ -41,12 +41,17 @@
                     <br><br>
                 Phone: <br> <b> {{ page.phone }} </b>
             </td>
-            <td>{% if page.buyer %}
-                <br>
+            <td>
+                {% if page.buyer %}
+                    <br>
                     {{ page.buyer }}
                 {% else %}
                 <br>
-                    <b><a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> Buy Now </a></b>
+                    {% if request.user != page.user %}
+                        <b><a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> Buy Now </a></b>
+                    {% else %}
+                       No Buyer
+                    {% endif %}
                 {% endif %}
             </td>
         </tr>

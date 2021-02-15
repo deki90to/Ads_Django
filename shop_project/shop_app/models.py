@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 
 class Category(models.Model):
-    category_name =     models.CharField(max_length=100, help_text='Category name')
+    category_name = models.CharField(max_length=100, help_text='Category name')
 
     def __str__(self):
         return self.category_name
