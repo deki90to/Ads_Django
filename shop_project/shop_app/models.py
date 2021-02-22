@@ -48,13 +48,13 @@ class ProductName(models.Model):
     product_picture_4 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
     product_picture_5 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
     product_picture_6 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
-    product_brand =         models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
     product_price =         models.IntegerField(default='0', null=True, blank=False)
-    buyer =                 models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer')
     phone =                 models.CharField(max_length=20)
+    product_brand =         models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=False, null=True)
+    sold_to =               models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='sold_to')
 
     def __str__(self):
-        return (f'{self.product_name}, {self.product_price}, {self.user}')
+        return (f'{self.product_name}, {self.product_price}e, {self.user}, {self.sold_to}')
 
     def get_absolute_url(self):
         return reverse('product')
@@ -62,17 +62,23 @@ class ProductName(models.Model):
     class Meta:
         ordering = ['-date_posted']
 
+    def buyer_name(self):
+        firstname = list(Buyer.objects.filter(first_name=self))
+        names = []
+        for name in firstname:
+            names.append(name)
+        return names
 
 class Buyer(models.Model):
-    buyed_item =    models.ForeignKey('ProductName', on_delete=models.SET_NULL, null=True, blank=False, related_name='buyed_item')
     first_name =    models.CharField(max_length=200)
     last_name =     models.CharField(max_length=200)
-    phone =         models.CharField(max_length=20)
     email =         models.EmailField()
+    phone =         models.CharField(max_length=20)
     address =       models.TextField(max_length=100)
     note =          models.TextField(max_length=300, blank=True, null=True)
     date_buyed =    models.DateTimeField(auto_now_add=True)
-
+    buyed_item =    models.OneToOneField('ProductName', on_delete=models.SET_NULL, null=True, blank=False, related_name='buyed_item')
+    
     def __str__(self):
         return (f'{self.first_name} {self.last_name}')
 

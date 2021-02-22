@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <title> SHOP </title>
 
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'shop_app/css/styles.css' %}"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'shop_app/css/styles.css' %}">
 
 {% if not user.is_authenticated %}
   <div class="text-center">
@@ -23,68 +23,6 @@
   <a class="btn btn-outline-primary " href="{% url 'register' %}"> Register </a>
   <a class="btn btn-outline-primary " href="{% url 'login' %}"> Login </a>
 {% endif %}
-
-<style>
-
-nav a {
-  margin: 0px;
-  font-size: 1.2em;
-  text-shadow: 1px 1px;
-  word-spacing: 10px;
-}
-
-h2,h5,h6 {
-  color: blue;
-  font-size: 150%;
-  text-shadow: 1px 1px;
-  line-height: 1.0;
-  word-spacing: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-h3 {
-  text-align: center;
-}
-
-body {
-  background-color: white;
-  padding: 0px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-img {
-  opacity: 1.0;
-}
-
-img:hover {
-  opacity: 0.8;
-}
-
-div {
-  opacity: 0.9;
-}
-
-input[type=text], input[type=note], input[type=email], input[type=number], input[type=file], input[type=password], input[name=username], input[type=address], input[name=buyed_item], input[name=product_brand], select, textarea {
-  text-width: 20%;
-  text-width: 0px;
-  padding: 3px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: lightblue;
-  border: none;
-  color: blue;
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 20px 10px;
-  cursor: pointer;
-  width: 20%;
-}
-
-</style>
 
 {% if user.is_authenticated %}
 <div class="pos-f-t">
@@ -103,10 +41,10 @@ input[type=button], input[type=submit], input[type=reset] {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active btn btn-info text-primary" aria-current="page" href="{% url 'productname-createview' %}"> Upload 📁 </a>
+            <a class="nav-link active btn btn-dark text-light" aria-current="page" href="{% url 'productname-createview' %}"> Upload 📁 </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active btn btn text-white bg-dark" aria-current="page" href="{% url 'product' %}"> ITEMS </a>
+            <a class="nav-link active btn btn-sm text-white bg-dark" aria-current="page" href="{% url 'product' %}"> ITEMS </a>
           </li>
 <!--           <li class="nav-item">
             <a class="nav-link active btn btn text-white bg-dark" aria-current="page" href="{% url 'buyer-createview' %}"> BUY </a>
@@ -116,7 +54,7 @@ input[type=button], input[type=submit], input[type=reset] {
           </li> -->
 <!--          <h1 style="color:white">|</h1>-->
           <li class="nav-item">
-            <a class="nav-link active btn btn text-white bg-dark" aria-current="page" href="{% url 'contact_list' %}"> CONTACT </a>
+            <a class="nav-link active btn btn-sm text-info bg-dark" aria-current="page" href="{% url 'contact_list' %}"> CONTACT </a>
           </li>
       </div>
       <nav class="navbar bg-primary" style="float:right;">

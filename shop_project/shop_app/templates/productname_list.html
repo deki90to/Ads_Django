@@ -9,8 +9,9 @@
             <th scope="col"> Title </th>
             <th scope="col"> Brand </th>
             <th scope="col"> Details </th>
-            <th scope="col"> Price (eu) </th>
-            <th scope="col"> Seller Info </th>
+            <th scope="col"> Price </th>
+            <th scope="col"> Posted On: </th>
+            <th scope="col"> Sellsman Name/Phone </th>
             <th scope="col"> Buyer </th>
         </tr>
     </thead>
@@ -33,32 +34,43 @@
                     {% endif %}
                 {% endif %}
             </td>
-            <td>{{ page.product_name }}</td>
-            <td>{{ page.product_brand }}</td>
-            <td>{{ page.product_description }}</td>
-            <td><br>{{ page.product_price }}</td>
+            <td><br> {{ page.product_name }} </td>
+            <td><br><br> {{ page.product_brand }} </td>
+            <td> {{ page.product_description }} </td>
+            <td><br><br> {{ page.product_price }}e </td>
+            <td> {{ page.date_posted }} </td>
                 <td>
                 {% if request.user == page.user %}
-                    <br><br> 
-                    It's me
+                    
                 {% else %}
-                    Name: <br> {{ page.user }} <br><br> Phone: <br> {{ page.phone }} 
+                   <br> {{ page.user }} {{ page.phone }}
                 {% endif %}
                 </td>
-            <td>
-                {% if page.buyer %}
-                    <br>
-                    <!-- {{ page.buyer }} -->
-                     <a class="nav-link active btn btn text-danger" aria-current="page" href="{% url 'buyer' %}"> <b> SOLD (click for details) </b></a>
-                {% else %}
-                    <br>
-                    {% if request.user != page.user %}
-                        <b><a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> Buy Now </a></b>
+
+
+
+                
+                <td>
+                    {{ page.buyer_name }}
+<!--                     {% if page.buyer_name %}
+
+                        <br> {{ page.buyer_name }}
+
                     {% else %}
-                       No Buyer
-                    {% endif %}
-                {% endif %}
-            </td>
+
+                        {% if request.user != page.user %}
+                            <br> <b> <a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> Buy Now </a> </b>
+                        {% else %}
+                            <br><br><br> <b> / </b>
+                        {% endif %}
+
+                    {% endif %} -->
+                </td>
+
+
+
+
+
         </tr>
     {% endfor %}
 
