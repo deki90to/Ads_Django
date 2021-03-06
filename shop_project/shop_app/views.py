@@ -1,11 +1,12 @@
 from django.db.models import fields
 from django.views import generic
 from django.views.generic.base import TemplateResponseMixin
-from . models import Category, Brand, ProductName, Buyer
+from . models import *
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from . forms import BuyerForm, ProductNameForm
 from django.forms.models import model_to_dict
+
 
 
 class CategoryListView(generic.ListView):
@@ -16,13 +17,21 @@ class BrandListView(generic.ListView):
     model = Brand
     template_name = 'brand_list.html'
 
-class DeviceListView(generic.ListView):
-    model = ProductName
-    template_name = 'productname_list.html'
+# class DeviceListView(generic.ListView):
+#     model = ProductName
+#     template_name = 'productname_list.html'
+
+def product(request):
+    products = ProductName.objects.all()
+    buyers = Buyer.objects.all()
+
+    return render(request, 'productname_list.html', {'products': products, 'buyers': buyers})
+
 
 class BuyerListView(generic.ListView):
     model = Buyer
     template_name = 'buyer_list.html'
+
 
 
 class CategoryCreateView(generic.CreateView):
@@ -53,6 +62,7 @@ def contact(request):
     return render(request, 'contact_list.html')
 
 
+
 class ProductNameDeleteView(generic.DeleteView):
     model = ProductName
     template_name = 'delete_item.html'
@@ -66,6 +76,21 @@ class ProductNameUpdateView(generic.UpdateView):
     success_url = reverse_lazy('product')
 
 
+
+
 class ImagesDetailView(generic.DetailView):
     model = ProductName
     template_name = 'images_details.html'
+
+
+def test(request):
+    product = ProductName.objects.all()
+    buyer = Buyer.objects.all()
+    return render(request, 'test.html', {'ProductName':product, 'Buyer':buyer})
+
+
+
+def buyer(request):
+    buyers = Buyer.objects.all()
+
+    return render(request, 'productname_list.html', {'buyers', buyers})

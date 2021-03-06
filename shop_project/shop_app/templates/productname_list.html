@@ -2,6 +2,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+
 <table class="table table-light table-striped table-hover">
     <thead class="thead-dark">
         <tr>
@@ -11,19 +12,21 @@
             <th scope="col"> Details </th>
             <th scope="col"> Price </th>
             <th scope="col"> Posted On: </th>
-            <th scope="col"> Sellsman Name/Phone </th>
-            <th scope="col"> Buyer </th>
+            <th scope="col"> Name/Phone </th>
+            <th scope="col"> Stock </th>
         </tr>
     </thead>
     <tbody>
-    {% for page in productname_list %}
+
+    {% for page in products %}
         <tr>
             <td>
                 {% if page.ad_image %}
                     <a href="{% url 'images_detailview' page.pk %}"><img src="{{ page.ad_image.url }}"></a>
                     {% if request.user == page.user %}
-                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
+                    <br>
                         <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
+                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
                     {% endif %}
                 {% else %}
                     No Image
@@ -34,43 +37,27 @@
                     {% endif %}
                 {% endif %}
             </td>
-            <td><br> {{ page.product_name }} </td>
-            <td><br><br> {{ page.product_brand }} </td>
+            <td>{{ page.product_name }} </td>
+            <td> {{ page.product_brand }} </td>
             <td> {{ page.product_description }} </td>
-            <td><br><br> {{ page.product_price }}e </td>
+            <td> {{ page.product_price }}e </td>
             <td> {{ page.date_posted }} </td>
-                <td>
-                {% if request.user == page.user %}
-                    
-                {% else %}
-                   <br> {{ page.user }} {{ page.phone }}
-                {% endif %}
-                </td>
-
-
-
+            <td> {{ page.user }} <br> {{ page.phone }} </td>
+            <td>
                 
-                <td>
-                    {{ page.buyer_name }}
-<!--                     {% if page.buyer_name %}
+                {% if page.sold_to %}
+                    <br><br> <b>SOLD</b>
+                {% else %}
 
-                        <br> {{ page.buyer_name }}
-
-                    {% else %}
-
-                        {% if request.user != page.user %}
-                            <br> <b> <a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> Buy Now </a> </b>
+                    {% if request.user != page.user %}
+                        <br> <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
                         {% else %}
-                            <br><br><br> <b> / </b>
-                        {% endif %}
 
-                    {% endif %} -->
-                </td>
+                    {% endif %}
+                    
+                {% endif %}
 
-
-
-
-
+            </td>
         </tr>
     {% endfor %}
 

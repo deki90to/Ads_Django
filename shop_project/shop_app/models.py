@@ -23,7 +23,7 @@ class Category(models.Model):
 
 class Brand(models.Model):
     brand_name =        models.CharField(max_length=255, help_text='Product name')
-    brand_category =    models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='product_category')
+    brand_category =    models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.brand_name
@@ -50,11 +50,13 @@ class ProductName(models.Model):
     product_picture_6 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
     product_price =         models.IntegerField(default='0', null=True, blank=False)
     phone =                 models.CharField(max_length=20)
-    product_brand =         models.ForeignKey('Brand', on_delete=models.SET_NULL, blank=False, null=True)
-    sold_to =               models.ForeignKey('Buyer', on_delete=models.SET_NULL, null=True, blank=True, related_name='sold_to')
+    product_brand =         models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True, null=True)
+    sold_to =               models.OneToOneField('Buyer', on_delete=models.CASCADE, null=True, related_name='sold_item_to')
+
+
 
     def __str__(self):
-        return (f'{self.product_name}, {self.product_price}e, {self.user}, {self.sold_to}')
+        return (f'{self.product_name}, {self.product_price}e, {self.user}')
 
     def get_absolute_url(self):
         return reverse('product')
@@ -62,12 +64,6 @@ class ProductName(models.Model):
     class Meta:
         ordering = ['-date_posted']
 
-    def buyer_name(self):
-        firstname = list(Buyer.objects.filter(first_name=self))
-        names = []
-        for name in firstname:
-            names.append(name)
-        return names
 
 class Buyer(models.Model):
     first_name =    models.CharField(max_length=200)
@@ -77,10 +73,11 @@ class Buyer(models.Model):
     address =       models.TextField(max_length=100)
     note =          models.TextField(max_length=300, blank=True, null=True)
     date_buyed =    models.DateTimeField(auto_now_add=True)
-    buyed_item =    models.OneToOneField('ProductName', on_delete=models.SET_NULL, null=True, blank=False, related_name='buyed_item')
+    buyed_item =    models.OneToOneField('ProductName', on_delete=models.CASCADE, null=True, blank=False)
+
     
     def __str__(self):
-        return (f'{self.first_name} {self.last_name}')
+        return (f'{self.first_name} {self.last_name} | {self.buyed_item}')
 
     def get_absolute_url(self):
         return reverse('buyer')
