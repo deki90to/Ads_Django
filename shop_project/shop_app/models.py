@@ -53,8 +53,6 @@ class ProductName(models.Model):
     product_brand =         models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True, null=True)
     sold_to =               models.OneToOneField('Buyer', on_delete=models.CASCADE, null=True, related_name='sold_item_to')
 
-
-
     def __str__(self):
         return (f'{self.product_name}, {self.product_price}e, {self.user}')
 
@@ -77,7 +75,7 @@ class Buyer(models.Model):
 
     
     def __str__(self):
-        return (f'{self.first_name} {self.last_name} | {self.buyed_item}')
+        return (f'{self.first_name} {self.last_name}')
 
     def get_absolute_url(self):
         return reverse('buyer')

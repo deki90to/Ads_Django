@@ -29,8 +29,9 @@
                         <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
                     {% endif %}
                 {% else %}
+                    <br>
                     No Image
-                    <br><br><br>
+                    <br><br>
                     {% if request.user == page.user %}
                         <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
                         <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
@@ -46,15 +47,12 @@
             <td>
                 
                 {% if page.sold_to %}
-                    <br><br> <b>SOLD</b>
+                    {{ page.sold_to }}
                 {% else %}
-
                     {% if request.user != page.user %}
                         <br> <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
-                        {% else %}
-
+                    {% else %}
                     {% endif %}
-                    
                 {% endif %}
 
             </td>
