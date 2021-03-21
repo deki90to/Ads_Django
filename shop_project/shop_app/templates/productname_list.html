@@ -21,22 +21,22 @@
     {% for page in products %}
         <tr>
             <td>
-                {% if page.ad_image %}
-                    <a href="{% url 'images_detailview' page.pk %}"><img src="{{ page.ad_image.url }}"></a>
-                    {% if request.user == page.user %}
-                    <br>
-                        <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
-                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
-                    {% endif %}
-                {% else %}
-                    <br>
-                    No Image
-                    <br><br>
-                    {% if request.user == page.user %}
-                        <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
-                        <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
-                    {% endif %}
+            {% if page.ad_image %}
+                <a href="{% url 'images_detailview' page.pk %}"><img src="{{ page.ad_image.url }}"></a>
+                {% if request.user == page.user %}
+                <br>
+                    <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
+                    <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
                 {% endif %}
+            {% else %}
+                <br>
+                No Image
+                <br><br>
+                {% if request.user == page.user %}
+                    <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
+                    <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
+                {% endif %}
+            {% endif %}
             </td>
             <td>{{ page.product_name }} </td>
             <td> {{ page.product_brand }} </td>
@@ -45,16 +45,13 @@
             <td> {{ page.date_posted }} </td>
             <td> {{ page.user }} <br> {{ page.phone }} </td>
             <td>
-                
-                {% if page.sold_to %}
-                    {{ page.sold_to }}
-                {% else %}
-                    {% if request.user != page.user %}
-                        <br> <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
-                    {% else %}
-                    {% endif %}
+            {% if page.buyer %}
+                {{ page.buyer.first_name }} {{ page.buyer.last_name }}
+            {% else %}
+                {% if request.user != page.user %}
+                    <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
                 {% endif %}
-
+            {% endif %}
             </td>
         </tr>
     {% endfor %}

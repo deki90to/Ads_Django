@@ -3,6 +3,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <table class="table table-light table-striped table-hover">
+
     <thead class="thead-dark">
         <tr>
             <th scope="col"> First Name </th>
@@ -15,8 +16,8 @@
             <th scope="col"> Item/Price/Seller </th>
         </tr>
     </thead>
-    <tbody>
 
+    <tbody>
     {% for page in buyer_list %}
         <tr>
             <td>{{ page.first_name }}</td>
@@ -32,8 +33,8 @@
             <td>{{ page.buyed_item }}</td>
         </tr>
     {% endfor %}
-
     </tbody>
+
 </table>
 {% endif %}
 {% endblock %}

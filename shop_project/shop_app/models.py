@@ -51,7 +51,6 @@ class ProductName(models.Model):
     product_price =         models.IntegerField(default='0', null=True, blank=False)
     phone =                 models.CharField(max_length=20)
     product_brand =         models.ForeignKey('Brand', on_delete=models.CASCADE, blank=True, null=True)
-    sold_to =               models.OneToOneField('Buyer', on_delete=models.CASCADE, null=True, related_name='sold_item_to')
 
     def __str__(self):
         return (f'{self.product_name}, {self.product_price}e, {self.user}')
@@ -71,8 +70,7 @@ class Buyer(models.Model):
     address =       models.TextField(max_length=100)
     note =          models.TextField(max_length=300, blank=True, null=True)
     date_buyed =    models.DateTimeField(auto_now_add=True)
-    buyed_item =    models.OneToOneField('ProductName', on_delete=models.CASCADE, null=True, blank=False)
-
+    buyed_item =    models.OneToOneField('ProductName', on_delete=models.SET_NULL, null=True, blank=False)
     
     def __str__(self):
         return (f'{self.first_name} {self.last_name}')
