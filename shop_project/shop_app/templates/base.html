@@ -13,7 +13,7 @@
   <div class="text-center">
   <h1 class="text-light text-center bg-primary"><strong><i>REGISTER</i> or <i>LOGIN</i></strong></h1>
     <nav class="navbar bg-primary" style="float:right;">
-      <a class="btn btn-sm btn-outline-light" href="{% url 'contact_list' %}"> 📞 Contact </a>
+      <!-- <a class="btn btn-sm btn-outline-light" href="{% url 'contact_list' %}"> 📞 Contact </a> -->
     </nav>
 <br>
 </div>
@@ -42,27 +42,37 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active btn btn-light text-primary" aria-current="page" href="{% url 'product' %}"> ITEMS </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'product' %}"> ITEMS </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active btn btn-light text-primary" aria-current="page" href="{% url 'productname-createview' %}"> UPLOAD </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'productname-createview' %}"> UPLOAD </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active btn btn bg-light text-primary" aria-current="page" href="{% url 'buyer-createview' %}"> BUY </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> BUY </a>
           </li>
            <li class="nav-item">
-            <a class="nav-link active btn btn text-primary bg-light" aria-current="page" href="{% url 'buyer' %}"> SOLD </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'buyer' %}"> SOLD </a>
           </li>
           <!-- <h1 style="color:white">|</h1> -->
           <li class="nav-item">
-            <a class="nav-link active btn btn-light text-primary" aria-current="page" href="{% url 'contact_list' %}"> CONTACT </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'contact_list' %}"> CONTACT </a>
           </li>
+
+        <div class="container">
+          <form class="form-inline" method="POST" action="{% url 'search' %}">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            <!-- <button class="btn btn-light" type="submit">Search</button> -->
+          </form>
+        </div>
+
       </div>
       <nav class="navbar bg-primary" style="float:right;">
         <a class="btn btn-sm btn-outline-light" href="{% url 'logout' %}"> Log Out </a>
       </nav>
     </div>
   </nav>
+
 {% endif %}
 </head>
 

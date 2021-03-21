@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<br><br>
+	<center>
+    {% if search %}
+
+        <h4> You searched "<b>{{ search }}</b>" </h4>
+		<hr> <br>
+
+	<ul>
+		{% for product in products %}
+
+	    	{% if product.ad_image %}
+				<a href="{% url 'images_detailview' product.pk %}"><img src="{{ product.ad_image.url }}"></a> <br>
+	        {% else %}
+	        	No Image <br>
+	        {% endif %}
+	        
+	        {{ product.product_name }}<br>
+	        {{ product.product_brand }}<br>
+	        {{ product.product_description }}<br>
+	        {{ product.date_posted }}<br>
+	        {{ product.product_price }}e <br>
+	        {{ product.user }} <br> {{ page.phone }} <br>
+	        
+	        {% if product.buyer %}
+	            Buyer: {{ product.buyer.first_name }} {{ product.buyer.last_name }} <br>
+	        {% else %}
+
+	            {% if request.user != page.user %}
+	                <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
+	            {% endif %}
+
+	        {% endif %}
+		{% endfor %}
+	</ul>
+	<br>
+
+
+	{% else %}
+		<h3>Search Something...</h3>
+		<br><br>
+
+		<div class="container">
+		  <form class="form-inline" method="POST" action="{% url 'search' %}">
+		    {% csrf_token %}
+		    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+		    <!-- <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button> -->
+		    <input type="submit" name="search" value="Search">
+		  </form>
+		</div>
+    {% endif %}
+
+
+	</center>
+{% endif %}
+{% endblock %}

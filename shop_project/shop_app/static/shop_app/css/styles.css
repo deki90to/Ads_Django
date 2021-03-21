@@ -36,7 +36,9 @@ nav a {
     opacity: 0.9;
   }
   
-  input[type=text], input[type=note], input[type=email], input[type=number], input[type=file], input[type=password], input[name=username], input[type=address], input[name=buyed_item], input[name=product_brand], select, textarea {
+  input[type=text], input[type=note], input[type=email], input[type=number], 
+  input[type=file], input[type=password], input[name=username], input[type=address], 
+  input[name=buyed_item], input[name=product_brand], select, textarea {
     text-width: 20%;
     text-width: 0px;
     padding: 3px;

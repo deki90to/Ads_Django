@@ -21,5 +21,5 @@ urlpatterns = [
     path('<pk>/update_item/', views.ProductNameUpdateView.as_view(), name='update_item'),
     path('<pk>/images/', views.ImagesDetailView.as_view(), name='images_detailview'),
 
-    path('test/', views.test, name='test'),
+    path('search/', views.search, name='search'),
 ]

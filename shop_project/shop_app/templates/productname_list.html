@@ -9,9 +9,9 @@
             <th scope="col"> Images </th>
             <th scope="col"> Title </th>
             <th scope="col"> Brand </th>
+            <th scope="col"> Posted On: </th>
             <th scope="col"> Details </th>
             <th scope="col"> Price </th>
-            <th scope="col"> Posted On: </th>
             <th scope="col"> Name/Phone </th>
             <th scope="col"> Stock </th>
         </tr>
@@ -41,8 +41,8 @@
             <td>{{ page.product_name }} </td>
             <td> {{ page.product_brand }} </td>
             <td> {{ page.product_description }} </td>
-            <td> {{ page.product_price }}e </td>
             <td> {{ page.date_posted }} </td>
+            <td> {{ page.product_price }}e </td>
             <td> {{ page.user }} <br> {{ page.phone }} </td>
             <td>
             {% if page.buyer %}

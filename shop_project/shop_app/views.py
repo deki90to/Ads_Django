@@ -76,21 +76,18 @@ class ProductNameUpdateView(generic.UpdateView):
     success_url = reverse_lazy('product')
 
 
-
-
 class ImagesDetailView(generic.DetailView):
     model = ProductName
     template_name = 'images_details.html'
 
 
-def test(request):
-    product = ProductName.objects.all()
-    buyer = Buyer.objects.all()
-    return render(request, 'test.html', {'ProductName':product, 'Buyer':buyer})
+def search(request):
+    if request.method == 'POST':
+        search = request.POST['search']
+        products = ProductName.objects.filter(product_brand__brand_name__icontains=search)
 
+        context = {'search':search, 'products':products}
+        return render(request, 'search.html', context)
 
-
-def buyer(request):
-    buyers = Buyer.objects.all()
-
-    return render(request, 'productname_list.html', {'buyers', buyers})
+    else:
+        return render(request, 'search.html')
