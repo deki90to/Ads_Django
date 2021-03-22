@@ -11,7 +11,7 @@
 
 {% if not user.is_authenticated %}
   <div class="text-center">
-  <h1 class="text-light text-center bg-primary"><strong><i>REGISTER</i> or <i>LOGIN</i></strong></h1>
+  <h1 class="text-light text-center bg-primary"><strong><i>Registruj se ili uloguj</i></strong></h1>
     <nav class="navbar bg-primary" style="float:right;">
       <!-- <a class="btn btn-sm btn-outline-light" href="{% url 'contact_list' %}"> 📞 Contact </a> -->
     </nav>
@@ -20,8 +20,8 @@
 
 <br><br>
 <div class="text-center">
-  <a class="btn btn-outline-primary " href="{% url 'register' %}"> Register </a>
-  <a class="btn btn-outline-primary " href="{% url 'login' %}"> Login </a>
+  <a class="btn btn-outline-primary " href="{% url 'register' %}"> Registruj se </a>
+  <a class="btn btn-outline-primary " href="{% url 'login' %}"> Uloguj se </a>
 </div>
 {% endif %}
 
@@ -42,33 +42,33 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'product' %}"> ITEMS </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'product' %}"> Artikli </a>
           </li>
-          <li class="nav-item">
+<!--           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'productname-createview' %}"> UPLOAD </a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+<!--           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'buyer-createview' %}"> BUY </a>
-          </li>
+          </li> -->
            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'buyer' %}"> SOLD </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'buyer' %}"> Prodato </a>
           </li>
           <!-- <h1 style="color:white">|</h1> -->
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'contact_list' %}"> CONTACT </a>
+            <a class="nav-link active" aria-current="page" href="{% url 'contact_list' %}"> Kontakt </a>
           </li>
 
         <div class="container">
           <form class="form-inline" method="POST" action="{% url 'search' %}">
             {% csrf_token %}
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pretraga artikla" aria-label="Search" name="search">
             <!-- <button class="btn btn-light" type="submit">Search</button> -->
           </form>
         </div>
 
       </div>
       <nav class="navbar bg-primary" style="float:right;">
-        <a class="btn btn-sm btn-outline-light" href="{% url 'logout' %}"> Log Out </a>
+        <a class="btn btn-sm btn-outline-light" href="{% url 'logout' %}"> Odjavi se </a>
       </nav>
     </div>
   </nav>
@@ -77,11 +77,11 @@
 </head>
 
 <body>
-
+<center>
   {% block content %}
     <h1> NO CONTENT </h1>
   {% endblock %}
-
+</center>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>

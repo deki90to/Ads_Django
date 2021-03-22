@@ -6,14 +6,14 @@
 <table class="table table-light table-striped table-hover">
     <thead class="thead-dark">
         <tr>
-            <th scope="col"> Images </th>
-            <th scope="col"> Title </th>
-            <th scope="col"> Brand </th>
-            <th scope="col"> Posted On: </th>
-            <th scope="col"> Details </th>
-            <th scope="col"> Price </th>
-            <th scope="col"> Name/Phone </th>
-            <th scope="col"> Stock </th>
+            <th scope="col"> Slike (klikni za vise) </th>
+            <th scope="col"> Artikl </th>
+            <th scope="col"> Brend </th>
+            <th scope="col"> Opis </th>
+            <th scope="col"> Objavljeno </th>
+            <th scope="col"> Cena </th>
+            <th scope="col"> Ime/Telefon </th>
+            <th scope="col"> Kupac </th>
         </tr>
     </thead>
     <tbody>
@@ -23,19 +23,19 @@
             <td>
             {% if page.ad_image %}
                 <a href="{% url 'images_detailview' page.pk %}"><img src="{{ page.ad_image.url }}"></a>
-                {% if request.user == page.user %}
+<!--                 {% if request.user == page.user %}
                 <br>
                     <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
                     <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
-                {% endif %}
+                {% endif %} -->
             {% else %}
-                <br>
+
                 No Image
-                <br><br>
-                {% if request.user == page.user %}
+
+<!--                 {% if request.user == page.user %}
                     <a href="{% url 'update_item' page.pk %}" class="btn btn-sm"> Edit </a>
                     <a href="{% url 'delete_item' page.pk %}" class="btn btn-sm"> Delete </a>
-                {% endif %}
+                {% endif %} -->
             {% endif %}
             </td>
             <td>{{ page.product_name }} </td>
@@ -45,13 +45,21 @@
             <td> {{ page.product_price }}e </td>
             <td> {{ page.user }} <br> {{ page.phone }} </td>
             <td>
-            {% if page.buyer %}
+                <!-- {% for buyer in buyers %} -->
+                    {% if page.buyer %}
+                        {{ buyer.first_name }} {{ buyer.last_name }}
+                    {% else %}
+                        <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> Kupi odmah </a>
+                    {% endif %}
+                <!-- {% endfor %} -->
+
+<!--            {% if page.buyer %}
                 {{ page.buyer.first_name }} {{ page.buyer.last_name }}
-            {% else %}
+                {% else %}
                 {% if request.user != page.user %}
                     <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
                 {% endif %}
-            {% endif %}
+            {% endif %} -->
             </td>
         </tr>
     {% endfor %}

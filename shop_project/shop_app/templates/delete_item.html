@@ -8,11 +8,11 @@
     {{ form }}
     <ul>
     	<br>
-        <h4>Are you sure you want to delete <i><b>{{ object }}</b></i>?</h4>
+        <h4> Da li ste sigurni da zelite da obrisete <i><b>{{ object }}</b></i>?</h4>
         <!-- <input type="submit" value="Confirm">  -->
         <br>
-        <button class='btn btn-danger text-light'> YES </button> 
-        <a href="{% url 'product' %}" class="btn btn-primary text-light"> NO </a>
+        <button class='btn btn-danger text-light'> Da </button> 
+        <a href="{% url 'product' %}" class="btn btn-primary text-light"> Ne </a>
     </ul>
 </form>
 {% endif %}

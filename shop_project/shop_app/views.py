@@ -17,10 +17,6 @@ class BrandListView(generic.ListView):
     model = Brand
     template_name = 'brand_list.html'
 
-# class DeviceListView(generic.ListView):
-#     model = ProductName
-#     template_name = 'productname_list.html'
-
 def product(request):
     products = ProductName.objects.all()
     buyers = Buyer.objects.all()
