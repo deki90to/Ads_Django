@@ -9,6 +9,12 @@ class registerForm(UserCreationForm):
 		model = User 
 		fields = ('username', 'password1', 'password2',)
 
+		labels = {
+        	'username':'Korisnicko ime',
+        	'password1':'Sifra',
+        	'password2':'Potvrdi sifru',
+        	}
+
 	def __init__(self, *args, **kwargs):
 		super(registerForm, self).__init__(*args, **kwargs)
 
