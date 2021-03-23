@@ -47,16 +47,26 @@
             <td>
 
 
-           {% if page.buyer %}
+                {% if page.buyer %}
+                    {{ page.buyer.first_name }}
+                {% else %}
+                    {% if request.user != page.user %}
+                        <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
+                    {% endif %}
+                {% endif %}
+
+
+           <!-- {% if page.buyer %}
                 {{ page.buyer.first_name }} {{ page.buyer.last_name }}
                 {% else %}
                 {% if request.user != page.user %}
                     <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
                 {% endif %}
-            {% endif %}
+            {% endif %} -->
             </td>
         </tr>
     {% endfor %}
+
 
     </tbody>
 </table>
