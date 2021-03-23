@@ -45,21 +45,15 @@
             <td> {{ page.product_price }}e </td>
             <td> {{ page.user }} <br> {{ page.phone }} </td>
             <td>
-                <!-- {% for buyer in buyers %} -->
-                    {% if page.buyer %}
-                        {{ buyer.first_name }} {{ buyer.last_name }}
-                    {% else %}
-                        <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> Kupi odmah </a>
-                    {% endif %}
-                <!-- {% endfor %} -->
 
-<!--            {% if page.buyer %}
+
+           {% if page.buyer %}
                 {{ page.buyer.first_name }} {{ page.buyer.last_name }}
                 {% else %}
                 {% if request.user != page.user %}
                     <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
                 {% endif %}
-            {% endif %} -->
+            {% endif %}
             </td>
         </tr>
     {% endfor %}
