@@ -5,8 +5,8 @@ from . import views
 
 urlpatterns = [
     path('category/', views.CategoryListView.as_view(), name='category'),
-    path('brand/', views.BrandListView.as_view(), name='brand'),
-    path('', views.product, name='product'),
+    path('', views.BrandListView.as_view(), name='brand'),
+    path('productslist', views.product, name='product'),
     path('buyer/', views.BuyerListView.as_view(), name='buyer'),
 
     path('category/createview/', views.CategoryCreateView.as_view(), name='category-createview'),
@@ -22,4 +22,9 @@ urlpatterns = [
     path('<pk>/images/', views.ImagesDetailView.as_view(), name='images_detailview'),
 
     path('search/', views.search, name='search'),
+
+
+
+    path('api/', views.api, name='api'),
+    path('products-api/', views.products, name='products'),
 ]

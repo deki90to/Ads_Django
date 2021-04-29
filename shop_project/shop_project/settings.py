@@ -1,8 +1,8 @@
 from pathlib import Path
 import os
-import django_heroku
-import dj_database_url
-from decouple import config
+# import django_heroku
+# import dj_database_url
+# from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,13 +31,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop_app',
     'users',
-    # 'ckeditor',
-    # 'ckeditor_uploader',
+    'rest_framework',
+    'corsheaders',
 ]
 
 # CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,7 +54,9 @@ ROOT_URLCONF = 'shop_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            # os.path.join(BASE_DIR, 'shopsite-react/build')
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,4 +131,15 @@ LOGOUT_REDIRECT_URL = 'product'
 
 STTICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'shopsite-react/build/static'),
+# ]
+
+CORS_ORIGIN_WHITELIST = [
+
+    "http://localhost:3000",
+]
+
+CORS_ALLOW_ALL_ORIGINS = True

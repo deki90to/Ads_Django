@@ -38,22 +38,35 @@
                 {% endif %} -->
             {% endif %}
             </td>
-            <td>{{ page.product_name }} </td>
+            <td> {{ page.product_name }} </td>
             <td> {{ page.product_brand }} </td>
             <td> {{ page.product_description }} </td>
             <td> {{ page.date_posted }} </td>
-            <td> {{ page.product_price }}e </td>
-            <td> {{ page.user }} <br> {{ page.phone }} </td>
+            <td><br> {{ page.product_price }}e </td>
+            <td><br> {{ page.user }} <br> {{ page.phone }} </td>
             <td>
-
-
+<br>
                 {% if page.buyer %}
+                    {{ page.buyer.first_name }} {{ page.buyer.last_name }}
+                    <br>
+                    <a href="{% url 'buyer' %}"> (lista kupaca) </a>
+                {% else %}
+                    {% if request.user != page.user %}
+                        <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary btn-sm"> BUY NOW </a>
+                    {% else %}
+                        Moj Oglas
+                    {% endif %}
+                {% endif %}
+
+
+
+<!--                 {% if page.buyer %}
                     {{ page.buyer.first_name }}
                 {% else %}
                     {% if request.user != page.user %}
                         <a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> BUY NOW </a>
                     {% endif %}
-                {% endif %}
+                {% endif %} -->
 
 
            <!-- {% if page.buyer %}
@@ -64,6 +77,7 @@
                 {% endif %}
             {% endif %} -->
             </td>
+
         </tr>
     {% endfor %}
 

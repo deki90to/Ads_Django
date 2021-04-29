@@ -9,13 +9,13 @@ class BuyerForm(forms.ModelForm):
         fields = '__all__'
 
         labels = {
+            'buyed_item':'Odaberi Artikl',
         	'first_name':'Ime',
         	'last_name':'Prezime',
         	'email':'Imejl',
         	'phone':'Telefon',
         	'address':'Adresa',
         	'note':'Napomena',
-        	'buyed_item':'Kupljeni Artikl',
         	}
 
 

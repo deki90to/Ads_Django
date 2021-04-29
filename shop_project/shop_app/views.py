@@ -7,6 +7,13 @@ from django.urls import reverse_lazy, reverse
 from . forms import BuyerForm, ProductNameForm
 from django.forms.models import model_to_dict
 
+from django.http import JsonResponse
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from . serializers import ProductNameSerializer
+
 
 
 class CategoryListView(generic.ListView):
@@ -44,7 +51,6 @@ class ProductNameCreateView(generic.CreateView):
     model = ProductName
     form_class = ProductNameForm
     template_name = 'productname_form.html'
-    # fields = ('user', 'product_brand', 'product_name', 'product_description', 'product_picture', 'product_price')
     ordering = ['-id']
 
 class BuyerCreateView(generic.CreateView):
@@ -87,3 +93,17 @@ def search(request):
 
     else:
         return render(request, 'search.html')
+
+
+@api_view(['GET'])
+def api(request):
+    api_urls = {
+        'products': '/products/',
+    }
+    return Response(api_urls)
+
+@api_view(['GET'])
+def products(request):
+    products = ProductName.objects.all()
+    serializer = ProductNameSerializer(products, many=True)
+    return Response(serializer.data)
