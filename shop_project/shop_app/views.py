@@ -98,7 +98,7 @@ def search(request):
 @api_view(['GET'])
 def api(request):
     api_urls = {
-        'products': '/products/',
+        'products': 'products/',
     }
     return Response(api_urls)
 
