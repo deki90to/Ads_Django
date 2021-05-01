@@ -51,7 +51,9 @@ ROOT_URLCONF = 'shop_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'shopsite-react/build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

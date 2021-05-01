@@ -41,7 +41,7 @@ class ProductName(models.Model):
     product_name =          models.CharField(max_length=200)
     product_description =   models.TextField(max_length=500)
     date_posted =           models.DateTimeField(auto_now_add=True)
-    ad_image =              ResizedImageField(size=[200,110], quality=100, upload_to='pictures', blank=True, null=True)
+    ad_image =              ResizedImageField(size=[320,240], quality=100, upload_to='pictures', blank=True, null=True)
     product_picture_1 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
     product_picture_2 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
     product_picture_3 =     ResizedImageField(quality=100, upload_to='pictures', blank=True, null=True)
