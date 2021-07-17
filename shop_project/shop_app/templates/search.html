@@ -11,31 +11,32 @@
 		<ul>
 		{% for product in products %}
 
-			{% if product.ad_image %}
+		{% if product.ad_image %}
 
-				<a href="{% url 'images_detailview' product.pk %}"><img src="{{ product.ad_image.url }}"></a> <br>
-				Artikl: 
+			<a href="{% url 'images_detailview' product.pk %}"><img src="{{ product.ad_image.url }}"></a> <br>
+			Artikl: 
 				<b>{{ product.product_name }}</b><br>
-				Brend: 
+			Brend: 
 				<b>{{ product.product_brand }}</b><br>
-				Opis: 
+			Opis: 
 				<b>{{ product.product_description }}</b><br>
-				Datum postavljanja: 
+			Datum postavljanja: 
 				<b>{{ product.date_posted }}</b><br>
-				Cena: 
+			Cena: 
 				<b>{{ product.product_price }}e</b> <br>
-				Prodavac: 
+			Prodavac: 
 				<b>{{ product.user }} <br> {{ page.phone }}</b>
-					<br>
-					{% if product.buyer %}
-						Kupac: <b>{{ product.buyer.first_name }} {{ product.buyer.last_name }}</b> <br>
-					{% else %}
-						<!-- {% if request.user != page.user %} -->
-						<a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> Kupi Odmah </a>
-						<!-- {% endif %} -->
-					{% endif %}
+				<br>
+				
+				{% if product.buyer %}
+					Kupac: <b>{{ product.buyer.first_name }} {{ product.buyer.last_name }}</b> <br>
+				{% else %}
+					<!-- {% if request.user != page.user %} -->
+					<a href="{% url 'buyer-createview' %}" class="btn btn-outline-primary"> Kupi Odmah </a>
+					<!-- {% endif %} -->
+				{% endif %}
 
-			{% endif %}
+		{% endif %}
 			
 		{% endfor %}
 		</ul>

@@ -13,6 +13,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from . serializers import ProductNameSerializer
+from rest_framework import serializers
 
 
 
@@ -95,15 +96,24 @@ def search(request):
         return render(request, 'search.html')
 
 
-@api_view(['GET'])
-def api(request):
-    api_urls = {
-        'products': 'products/',
-    }
-    return Response(api_urls)
+# @api_view(['GET'])
+# def api(request):
+#     api_urls = {
+#         'products': 'api/products/',
+#         'details': 'api/details/',
+#     }
+#     return Response(api_urls)
 
-@api_view(['GET'])
-def products(request):
-    products = ProductName.objects.all()
-    serializer = ProductNameSerializer(products, many=True)
-    return Response(serializer.data)
+
+# @api_view(['GET'])
+# def products(request):
+#     products = ProductName.objects.all()
+#     serializer = ProductNameSerializer(products, many=True)
+#     return Response(serializer.data)
+
+
+# @api_view(['GET'])
+# def api_details(request, pk):
+#     details = ProductName.objects.get(pk=pk)
+#     serializer = ProductNameSerializer(details, many=False)
+#     return Response(serializer.data)

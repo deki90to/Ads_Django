@@ -25,6 +25,7 @@ urlpatterns = [
 
 
 
-    path('api/', views.api, name='api'),
-    path('api/products/', views.products, name='products'),
+    # path('api/', views.api, name='api'),
+    # path('api/products/', views.products, name='products'),
+    # path('api/details/', views.api_details, name='details'),
 ]
