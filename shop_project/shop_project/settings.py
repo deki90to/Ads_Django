@@ -130,7 +130,7 @@ STTICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'shopsite-react/build/static'),
+    os.path.join(BASE_DIR, 'shop_project/shop_app/static/shop_app'),
 ]
 
 
